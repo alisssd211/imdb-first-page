@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover featured movies, explore ratings, and build your IMDb-inspired watchlist.">
+    <!-- این مسیرها کمک می‌کنن صفحه رو با Vite یا Live Server راحت اجرا کنیم -->
+    <title>IMDb | Featured Movies</title>
+  <script type="module" crossorigin src="/assets/index-CvUpnJYN.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-aFHyyDgf.css">
+</head>
+<body>
+    <!-- همه‌چی که برای رفت‌وآمد سریع لازمه همین بالاست -->
+    <header class="site-header">
+        <nav class="topbar" aria-label="Main navigation">
+            <a class="brand" href="https://www.imdb.com/" aria-label="IMDb home">IMDb</a>
+
+            <!-- با این دکمه منوی دسته‌ها باز و بسته می‌شه -->
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
+                <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+                <span class="menu-label">Menu</span>
+            </button>
+
+            <!-- اسم فیلم یا آدم‌ها رو اینجا جست‌وجو کن -->
+            <form class="search-form" action="https://www.imdb.com/find/" method="get" role="search">
+                <label class="sr-only" for="search-category">Search category</label>
+                <select id="search-category" name="s">
+                    <option value="all">All</option>
+                    <option value="tt">Titles</option>
+                    <option value="nm">Names</option>
+                    <option value="co">Companies</option>
+                </select>
+                <label class="sr-only" for="site-search">Search IMDb</label>
+                <input id="site-search" type="search" name="q" placeholder="Search IMDb" required>
+                <button class="search-button" type="submit" aria-label="Search">
+                    <span class="search-icon" aria-hidden="true"></span>
+                </button>
+            </form>
+
+            <!-- چند تا میان‌بر دم‌دستی -->
+            <a class="pro-link" href="https://pro.imdb.com/">IMDbPro</a>
+            <a class="watchlist-link" href="https://www.imdb.com/user/urwatchlist">＋ <span>Watchlist</span></a>
+            <a class="signin-link" href="https://www.imdb.com/registration/signin/">Sign in</a>
+        </nav>
+
+        <!-- پس‌زمینه‌ی منو و خود پنل -->
+        <div class="menu-backdrop" hidden></div>
+        <section class="menu-panel" id="site-menu" aria-label="IMDb menu" hidden>
+            <div class="menu-section">
+                <h2>Movies</h2>
+                <a href="https://www.imdb.com/chart/moviemeter/">Most Popular Movies</a>
+                <a href="https://www.imdb.com/chart/top/">Top 250 Movies</a>
+                <a href="https://www.imdb.com/what-to-watch/">Browse Movies by Genre</a>
+            </div>
+            <div class="menu-section">
+                <h2>TV Shows</h2>
+                <a href="https://www.imdb.com/chart/tvmeter/">Most Popular TV Shows</a>
+                <a href="https://www.imdb.com/chart/toptv/">Top 250 TV Shows</a>
+                <a href="https://www.imdb.com/feature/genre/">Browse TV Shows</a>
+            </div>
+            <div class="menu-section">
+                <h2>Watch</h2>
+                <a href="https://www.imdb.com/what-to-watch/">What to Watch</a>
+                <a href="https://www.imdb.com/trailers/">Latest Trailers</a>
+                <a href="https://www.imdb.com/imdbpicks/">IMDb Picks</a>
+            </div>
+            <div class="menu-section">
+                <h2>People</h2>
+                <a href="https://www.imdb.com/feature/genre/">Celebrities</a>
+                <a href="https://www.imdb.com/awards/">Awards & Events</a>
+                <a href="https://www.imdb.com/news/">News</a>
+            </div>
+        </section>
+    </header>
+
+    <!-- از اینجا به بعد بخش‌های اصلی صفحه شروع می‌شن -->
+    <main class="home-content">
+        <section class="featured-section" aria-labelledby="featured-heading">
+            <!-- یه معرفی کوتاه برای فیلم‌های ویژه -->
+            <header class="section-heading">
+                <div>
+                    <p class="section-kicker">IMDb | FEATURED</p>
+                    <h1 id="featured-heading">Featured today</h1>
+                </div>
+                <p class="section-caption">Trailers and stories worth a closer look</p>
+            </header>
+
+            <!-- روی صفحه‌ی بزرگ کنار هم‌اند و روی گوشی زیر هم قرار می‌گیرن -->
+            <div class="featured-layout" id="featured-experience">
+                <div class="spotlight-column">
+                    <!-- هر کدوم از این کارت‌ها یه اسلایده؛ کارت‌های پنهان هم با Tab انتخاب نمی‌شن -->
+                    <div class="feature-stage" id="featured-carousel" aria-label="Featured titles" aria-roledescription="carousel">
+                        <!-- اسلایدها رو همین کنترل‌های پایین جابه‌جا می‌کنن -->
+                        <div class="feature-slides">
+                        <article class="feature-slide is-active" aria-label="1 of 4" aria-roledescription="slide" aria-hidden="false">
+                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg" alt="" fetchpriority="high" decoding="async">
+                            <div class="feature-copy">
+                                <p class="feature-kicker">FEATURED TRAILER</p>
+                                <h2>Dune: Part Two</h2>
+                                <p class="feature-meta"><span>2024</span><span>Action</span><span>2h 46m</span><span class="rating">★ 8.5</span></p>
+                                <p class="feature-description">Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
+                                <a class="title-link" href="https://www.imdb.com/title/tt15239678/">Explore title <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+
+                        <article class="feature-slide" aria-label="2 of 4" aria-roledescription="slide" aria-hidden="true" inert>
+                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg" alt="" loading="lazy" decoding="async">
+                            <div class="feature-copy">
+                                <p class="feature-kicker">FEATURED TRAILER</p>
+                                <h2>Oppenheimer</h2>
+                                <p class="feature-meta"><span>2023</span><span>Drama</span><span>3h</span><span class="rating">★ 8.3</span></p>
+                                <p class="feature-description">The story of J. Robert Oppenheimer and the scientific team behind the development of the first atomic bomb.</p>
+                                <a class="title-link" href="https://www.imdb.com/title/tt15398776/">Explore title <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+
+                        <article class="feature-slide" aria-label="3 of 4" aria-roledescription="slide" aria-hidden="true" inert>
+                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="" loading="lazy" decoding="async">
+                            <div class="feature-copy">
+                                <p class="feature-kicker">FEATURED TRAILER</p>
+                                <h2>Spider-Man: Across the Spider-Verse</h2>
+                                <p class="feature-meta"><span>2023</span><span>Animation</span><span>2h 20m</span><span class="rating">★ 8.6</span></p>
+                                <p class="feature-description">Miles Morales is drawn into a multiverse-spanning adventure alongside a new team of Spider-People.</p>
+                                <a class="title-link" href="https://www.imdb.com/title/tt9362722/">Explore title <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+
+                        <article class="feature-slide" aria-label="4 of 4" aria-roledescription="slide" aria-hidden="true" inert>
+                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg" alt="" loading="lazy" decoding="async">
+                            <div class="feature-copy">
+                                <p class="feature-kicker">FEATURED TRAILER</p>
+                                <h2>The Batman</h2>
+                                <p class="feature-meta"><span>2022</span><span>Crime</span><span>2h 56m</span><span class="rating">★ 7.8</span></p>
+                                <p class="feature-description">Batman investigates a series of clues that uncover corruption and a new threat to Gotham City.</p>
+                                <a class="title-link" href="https://www.imdb.com/title/tt1877830/">Explore title <span aria-hidden="true">↗</span></a>
+                            </div>
+                        </article>
+                        </div>
+
+                        <!-- اگه خواستی خودت بین فیلم‌ها عقب و جلو برو -->
+                        <button class="stage-arrow stage-arrow-previous" type="button" aria-label="Previous featured title">‹</button>
+                        <button class="stage-arrow stage-arrow-next" type="button" aria-label="Next featured title">›</button>
+                    </div>
+
+                    <!-- نقطه‌ها شماره‌ی اسلاید رو نشون می‌دن؛ چرخش خودکار رو هم می‌شه نگه داشت -->
+                    <div class="carousel-toolbar">
+                        <div class="carousel-dots" role="group" aria-label="Choose a featured title">
+                            <button class="carousel-dot" type="button" data-slide-target="0" aria-label="Show slide 1"></button>
+                            <button class="carousel-dot" type="button" data-slide-target="1" aria-label="Show slide 2"></button>
+                            <button class="carousel-dot" type="button" data-slide-target="2" aria-label="Show slide 3"></button>
+                            <button class="carousel-dot" type="button" data-slide-target="3" aria-label="Show slide 4"></button>
+                        </div>
+                        <div class="carousel-tools">
+                            <span class="slide-count" aria-live="polite">01 / 04</span>
+                            <button class="autoplay-toggle" type="button" aria-label="Pause automatic slideshow" title="Pause slideshow">
+                                <span class="playback-icon" aria-hidden="true">Ⅱ</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- با عوض شدن اسلاید، سه پیشنهاد بعدی اینجا مرتب می‌شن -->
+                <aside class="up-next" aria-labelledby="up-next-heading">
+                    <div class="up-next-heading">
+                        <div>
+                            <p class="section-kicker">KEEP WATCHING</p>
+                            <h2 id="up-next-heading">Up next</h2>
+                        </div>
+                        <span class="up-next-mark" aria-hidden="true">▶</span>
+                    </div>
+
+                    <ol class="up-next-list">
+                        <li hidden>
+                            <button class="up-next-item" type="button" data-slide-to="0">
+                                <img src="https://image.tmdb.org/t/p/w342/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="" loading="lazy" decoding="async">
+                                <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Dune: Part Two</span><span class="up-next-meta">2024 · 2h 46m</span></span>
+                                <span class="up-next-play" aria-hidden="true">▶</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="up-next-item" type="button" data-slide-to="1">
+                                <img src="https://image.tmdb.org/t/p/w342/ptpr0kGAckfQkJeJIt8st5dglvd.jpg" alt="" loading="lazy" decoding="async">
+                                <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Oppenheimer</span><span class="up-next-meta">2023 · 3h</span></span>
+                                <span class="up-next-play" aria-hidden="true">▶</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="up-next-item" type="button" data-slide-to="2">
+                                <img src="https://image.tmdb.org/t/p/w342/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="" loading="lazy" decoding="async">
+                                <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Across the Spider-Verse</span><span class="up-next-meta">2023 · 2h 20m</span></span>
+                                <span class="up-next-play" aria-hidden="true">▶</span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="up-next-item" type="button" data-slide-to="3">
+                                <img src="https://image.tmdb.org/t/p/w342/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="" loading="lazy" decoding="async">
+                                <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">The Batman</span><span class="up-next-meta">2022 · 2h 56m</span></span>
+                                <span class="up-next-play" aria-hidden="true">▶</span>
+                            </button>
+                        </li>
+                    </ol>
+
+                    <a class="browse-trailers" href="https://www.imdb.com/trailers/">Browse more trailers <span aria-hidden="true">→</span></a>
+                </aside>
+            </div>
+        </section>
+
+        <!-- چند تا فیلم برای شروع؛ فیلتر و مرتب‌سازی هم پایینشون هست -->
+        <section class="movie-picks" id="movie-picks" aria-labelledby="movie-picks-heading">
+            <header class="movie-picks-heading">
+                <div>
+                    <p class="section-kicker">A FEW GOOD PICKS</p>
+                    <h2 id="movie-picks-heading">Find your next favorite</h2>
+                </div>
+                <a class="movie-chart-link" href="https://www.imdb.com/chart/top/">Explore IMDb charts <span aria-hidden="true">→</span></a>
+            </header>
+
+            <!-- بدون رفرش صفحه، فیلم‌ها رو بگرد و مرتب کن -->
+            <div class="movie-controls">
+                <label class="sr-only" for="movie-filter">Filter movies by title</label>
+                <input id="movie-filter" type="search" placeholder="Find a movie..." autocomplete="off">
+                <label class="sr-only" for="genre-filter">Filter by genre</label>
+                <select id="genre-filter">
+                    <option value="all">All genres</option>
+                    <option value="action">Action</option>
+                    <option value="animation">Animation</option>
+                    <option value="crime">Crime</option>
+                    <option value="drama">Drama</option>
+                    <option value="history">History</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="thriller">Thriller</option>
+                </select>
+                <label class="sr-only" for="movie-sort">Sort movies</label>
+                <select id="movie-sort">
+                    <option value="popular">IMDb rating</option>
+                    <option value="newest">Newest first</option>
+                    <option value="title">Title A–Z</option>
+                </select>
+                <button class="watchlist-filter" type="button" aria-pressed="false">＋ Watchlist</button>
+            </div>
+
+            <p class="movie-results" aria-live="polite"></p>
+            <!-- کارت‌ها از اول اینجان؛ جاوااسکریپت فقط نمایش و ترتیبشون رو عوض می‌کنه -->
+            <div class="movie-grid" aria-live="polite">
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt15239678/" aria-label="Dune: Part Two on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">01</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">SCI-FI · ADVENTURE</p>
+                        <div class="movie-title-row"><h3>Dune: Part Two</h3><span class="movie-rating">★ 8.5</span></div>
+                        <p class="movie-year">2024 <span>·</span> 2h 46m</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt15398776/" aria-label="Oppenheimer on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg" alt="Oppenheimer poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">02</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">DRAMA · HISTORY</p>
+                        <div class="movie-title-row"><h3>Oppenheimer</h3><span class="movie-rating">★ 8.3</span></div>
+                        <p class="movie-year">2023 <span>·</span> 3h</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt9362722/" aria-label="Spider-Man: Across the Spider-Verse on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Spider-Man: Across the Spider-Verse poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">03</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">ANIMATION · ACTION</p>
+                        <div class="movie-title-row"><h3>Across the Spider-Verse</h3><span class="movie-rating">★ 8.6</span></div>
+                        <p class="movie-year">2023 <span>·</span> 2h 20m</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt1877830/" aria-label="The Batman on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="The Batman poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">04</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">CRIME · DRAMA</p>
+                        <div class="movie-title-row"><h3>The Batman</h3><span class="movie-rating">★ 7.8</span></div>
+                        <p class="movie-year">2022 <span>·</span> 2h 56m</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt0816692/" aria-label="Interstellar on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">05</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">SCI-FI · DRAMA</p>
+                        <div class="movie-title-row"><h3>Interstellar</h3><span class="movie-rating">★ 8.7</span></div>
+                        <p class="movie-year">2014 <span>·</span> 2h 49m</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+
+                <article class="movie-card">
+                    <a class="movie-poster" href="https://www.imdb.com/title/tt6751668/" aria-label="Parasite on IMDb">
+                        <img src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" alt="Parasite poster" loading="lazy" decoding="async">
+                        <span class="movie-rank">06</span>
+                    </a>
+                    <div class="movie-card-copy">
+                        <p class="movie-genre">THRILLER · DRAMA</p>
+                        <div class="movie-title-row"><h3>Parasite</h3><span class="movie-rating">★ 8.5</span></div>
+                        <p class="movie-year">2019 <span>·</span> 2h 12m</p>
+                        <button class="card-watchlist-toggle" type="button" aria-pressed="false">＋ Add to Watchlist</button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- چند چهره‌ی آشنا از دنیای سینما -->
+        <section class="people-section" aria-labelledby="people-heading">
+            <header class="movie-picks-heading">
+                <div>
+                    <p class="section-kicker">STARS IN THE SPOTLIGHT</p>
+                    <h2 id="people-heading">Popular stars</h2>
+                </div>
+                <a class="movie-chart-link" href="https://www.imdb.com/search/name/">Meet more stars <span aria-hidden="true">→</span></a>
+            </header>
+            <div class="people-grid">
+                <a class="person-card" href="https://www.imdb.com/name/nm0000138/">
+                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg" alt="Leonardo DiCaprio" loading="lazy" decoding="async"></span>
+                    <span class="person-name">Leonardo DiCaprio</span>
+                    <span class="person-note">Actor · Producer</span>
+                </a>
+                <a class="person-card" href="https://www.imdb.com/name/nm0000129/">
+                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg" alt="Tom Cruise" loading="lazy" decoding="async"></span>
+                    <span class="person-name">Tom Cruise</span>
+                    <span class="person-note">Actor · Producer</span>
+                </a>
+                <a class="person-card" href="https://www.imdb.com/name/nm0614165/">
+                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg" alt="Cillian Murphy" loading="lazy" decoding="async"></span>
+                    <span class="person-name">Cillian Murphy</span>
+                    <span class="person-note">Actor · Producer</span>
+                </a>
+                <a class="person-card" href="https://www.imdb.com/name/nm3053338/">
+                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/euDPyqLnuwaWMHajcU3oZ9uZezR.jpg" alt="Margot Robbie" loading="lazy" decoding="async"></span>
+                    <span class="person-name">Margot Robbie</span>
+                    <span class="person-note">Actor · Producer</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- یه نگاه سریع به بودجه‌ی تقریبی چند فیلم معروف -->
+        <section class="budget-section" aria-labelledby="budget-heading">
+            <header class="movie-picks-heading">
+                <div>
+                    <p class="section-kicker">THE NUMBERS BEHIND THE MOVIES</p>
+                    <h2 id="budget-heading">Big-screen budgets</h2>
+                </div>
+                <span class="budget-unit">Estimated production budgets · USD</span>
+            </header>
+            <div class="budget-chart" role="list" aria-label="Estimated film production budgets">
+                <div class="budget-row" role="listitem" data-budget="190">
+                    <div class="budget-label"><span>Dune: Part Two</span><strong>$190M</strong></div>
+                    <div class="budget-track"><span class="budget-bar"></span></div>
+                </div>
+                <div class="budget-row" role="listitem" data-budget="185">
+                    <div class="budget-label"><span>The Batman</span><strong>$185M</strong></div>
+                    <div class="budget-track"><span class="budget-bar"></span></div>
+                </div>
+                <div class="budget-row" role="listitem" data-budget="165">
+                    <div class="budget-label"><span>Interstellar</span><strong>$165M</strong></div>
+                    <div class="budget-track"><span class="budget-bar"></span></div>
+                </div>
+                <div class="budget-row" role="listitem" data-budget="100">
+                    <div class="budget-label"><span>Oppenheimer</span><strong>$100M</strong></div>
+                    <div class="budget-track"><span class="budget-bar"></span></div>
+                </div>
+                <div class="budget-row" role="listitem" data-budget="11">
+                    <div class="budget-label"><span>Parasite</span><strong>$11M</strong></div>
+                    <div class="budget-track"><span class="budget-bar"></span></div>
+                </div>
+            </div>
+            <p class="budget-disclaimer">Budgets are approximate reported production costs, not box-office results. Figures may vary by source.</p>
+        </section>
+    </main>
+
+    <!-- ته صفحه هم راه‌های دسترسی و توضیح کوتاه این نمونه رو گذاشتیم -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <a class="brand footer-brand" href="https://www.imdb.com/" aria-label="IMDb home">IMDb</a>
+                <p class="footer-tagline">Find movies. Follow stories. Celebrate the people who make them.</p>
+            </div>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="https://www.imdb.com/conditions/">Conditions of Use</a>
+                <a href="https://www.imdb.com/privacy/">Privacy Policy</a>
+                <a href="https://www.imdb.com/privacy/cookie/">Cookie Settings</a>
+                <a href="https://help.imdb.com/">Help</a>
+            </nav>
+            <p class="footer-about">A fan-made IMDb-inspired movie page. Ratings, budgets, images, and trademarks belong to their respective owners.</p>
+            <p class="footer-legal">© 2026 IMDb-inspired demo. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

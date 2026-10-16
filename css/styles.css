@@ -1,0 +1,1328 @@
+/* رنگ و حال‌وهوای کلی صفحه از همین‌جا میاد */
+:root {
+    color-scheme: dark;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    background: #0b0b0b;
+    color: #f5f5f5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* پایه‌ی صفحه و فونت کنترل‌ها رو یک‌دست نگه می‌داریم */
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background: #0b0b0b;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+/* نوار بالای صفحه و چیدمان لینک‌ها */
+.site-header {
+    position: relative;
+    z-index: 10;
+    background: #121212;
+    border-bottom: 1px solid #303030;
+}
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: min(100% - 40px, 1280px);
+    min-height: 64px;
+    margin: 0 auto;
+}
+
+/* همون لوگوی زرد و آشنای IMDb */
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 54px;
+    height: 34px;
+    border-radius: 4px;
+    background: #f5c518;
+    color: #111;
+    font-family: Arial, sans-serif;
+    font-size: 21px;
+    font-weight: 900;
+}
+
+/* دکمه‌ی منو و سه خط کوچولوش */
+.menu-toggle,
+.search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    background: transparent;
+    color: #f5f5f5;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    gap: 9px;
+    min-height: 42px;
+    padding: 0 2px;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.menu-toggle:hover,
+.pro-link:hover,
+.watchlist-link:hover,
+.signin-link:hover {
+    color: #f5c518;
+}
+
+.menu-icon {
+    display: grid;
+    gap: 4px;
+    width: 18px;
+}
+
+.menu-icon span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+}
+
+/* اجزای جست‌وجو، از انتخاب دسته تا ذره‌بین */
+.search-form {
+    display: flex;
+    flex: 1 1 auto;
+    min-width: 140px;
+    height: 38px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #fff;
+    color: #222;
+}
+
+.search-form select {
+    width: 78px;
+    padding: 0 10px;
+    border: 0;
+    border-right: 1px solid #d6d6d6;
+    outline: 0;
+    background: #f3f3f3;
+    color: #222;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 0 12px;
+    border: 0;
+    outline: 0;
+    background: #fff;
+    color: #222;
+    font-size: 14px;
+}
+
+.search-button {
+    width: 42px;
+    flex: 0 0 42px;
+    color: #222;
+}
+
+.search-button:hover {
+    background: #ededed;
+}
+
+.search-icon {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+}
+
+.search-icon::after {
+    position: absolute;
+    right: -5px;
+    bottom: -3px;
+    width: 6px;
+    height: 2px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+    background: currentColor;
+    content: "";
+}
+
+/* لینک‌های IMDbPro، واچ‌لیست و ورود */
+.pro-link {
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.watchlist-link,
+.signin-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.watchlist-link {
+    gap: 5px;
+}
+
+.watchlist-link:first-letter {
+    color: #5799ef;
+    font-size: 20px;
+}
+
+.signin-link {
+    padding-left: 17px;
+    border-left: 1px solid #4a4a4a;
+}
+
+/* سایه‌ی پشت منو و پنلی که باز می‌شه */
+.menu-backdrop {
+    position: fixed;
+    z-index: 1;
+    inset: 0;
+    background: rgb(0 0 0 / 58%);
+}
+
+.menu-panel {
+    position: absolute;
+    z-index: 2;
+    top: 100%;
+    left: 50%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 28px;
+    width: min(calc(100% - 40px), 960px);
+    padding: 30px 34px 34px;
+    transform: translateX(-50%);
+    border: 1px solid #303030;
+    border-top: 2px solid #f5c518;
+    border-radius: 0 0 8px 8px;
+    background: #1b1b1b;
+    box-shadow: 0 18px 40px rgb(0 0 0 / 45%);
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.menu-section h2 {
+    margin: 0 0 3px;
+    color: #f5c518;
+    font-size: 16px;
+}
+
+.menu-section a {
+    color: #ddd;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.menu-section a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* چیزهای کوچیکی که استفاده با کیبورد و صفحه‌خوان رو راحت‌تر می‌کنن */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+:focus-visible {
+    outline: 2px solid #f5c518;
+    outline-offset: 3px;
+}
+
+/* توی تبلت نوار جمع‌وجورتر می‌شه و منو دو ستونه */
+@media (max-width: 760px) {
+    .topbar {
+        gap: 14px;
+    }
+
+    .pro-link {
+        display: none;
+    }
+
+    .menu-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px 18px;
+        padding: 24px;
+    }
+}
+
+/* توی گوشی، جست‌وجو میاد ردیف بعد و تمام عرض رو می‌گیره */
+@media (max-width: 560px) {
+    .topbar {
+        display: grid;
+        grid-template-columns: auto auto 1fr auto;
+        grid-template-areas: "brand menu spacer signin" "search search search search";
+        gap: 9px 14px;
+        width: calc(100% - 28px);
+        padding: 10px 0 12px;
+    }
+
+    .brand {
+        grid-area: brand;
+    }
+
+    .menu-toggle {
+        grid-area: menu;
+    }
+
+    .search-form {
+        grid-area: search;
+        width: 100%;
+    }
+
+    .watchlist-link {
+        display: none;
+    }
+
+    .signin-link {
+        grid-area: signin;
+        min-height: 38px;
+        padding-left: 12px;
+    }
+
+    .menu-panel {
+        left: 0;
+        width: 100%;
+        padding: 22px 20px 26px;
+        transform: none;
+    }
+}
+
+/* برای گوشی‌های باریک‌تر هم کمی جا باز می‌کنیم */
+@media (max-width: 360px) {
+    .menu-label {
+        display: none;
+    }
+
+    .menu-panel {
+        gap: 22px 12px;
+    }
+
+    .menu-section a {
+        font-size: 13px;
+    }
+}
+
+/* محتوا رو وسط نگه می‌داریم تا روی مانیتورهای بزرگ زیادی کش نیاد */
+.home-content {
+    width: min(calc(100% - 48px), 1280px);
+    margin: 44px auto 80px;
+}
+
+/* تیترها همون خط زرد آشنای IMDb رو دارن */
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 22px;
+}
+
+.section-kicker {
+    margin: 0 0 8px;
+    color: #f5c518;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.section-heading h1,
+.up-next-heading h2 {
+    margin: 0;
+    color: #f5f5f5;
+    font-size: 30px;
+    line-height: 1.1;
+}
+
+.section-caption {
+    margin: 0 0 2px;
+    color: #a8a8a8;
+    font-size: 14px;
+}
+
+/* اسلایدر جا بازتری داره و پیشنهادهای بعدی کنارش می‌شینن */
+.featured-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 330px;
+    align-items: start;
+    gap: 32px;
+}
+
+.spotlight-column {
+    min-width: 0;
+}
+
+/* قاب اسلایدر با عوض شدن عکس اندازه‌ش رو حفظ می‌کنه */
+.feature-stage {
+    position: relative;
+    min-height: 430px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    isolation: isolate;
+    background: #202020;
+}
+
+/* اسلایدها روی هم می‌مونن و نرم محو می‌شن */
+.feature-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 400ms ease, visibility 400ms ease;
+}
+
+.feature-slide.is-active {
+    z-index: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+.feature-slide::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: linear-gradient(90deg, rgb(0 0 0 / 84%) 0%, rgb(0 0 0 / 48%) 52%, rgb(0 0 0 / 7%) 100%), linear-gradient(0deg, rgb(0 0 0 / 70%) 0%, transparent 70%);
+    content: "";
+}
+
+.feature-artwork {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+}
+
+/* گرادیان کمک می‌کنه نوشته‌ها روی عکس روشن هم خونده بشن */
+.feature-copy {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 690px);
+    padding: 42px 44px;
+}
+
+.feature-kicker {
+    margin: 0 0 10px;
+    color: #f5c518;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.feature-copy h2 {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 38px;
+    line-height: 1.08;
+}
+
+.feature-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 15px;
+    margin: 0 0 14px;
+    color: #ddd;
+    font-size: 13px;
+}
+
+.rating {
+    color: #f5c518;
+    font-weight: 700;
+}
+
+.feature-description {
+    max-width: 540px;
+    margin: 0 0 20px;
+    color: #e2e2e2;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.title-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 1px solid rgb(255 255 255 / 55%);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.title-link:hover {
+    border-color: #f5c518;
+    background: #f5c518;
+    color: #111;
+}
+
+/* فلش‌های روی عکس برای عقب و جلو رفتن */
+.stage-arrow {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    display: grid;
+    width: 42px;
+    height: 54px;
+    transform: translateY(-50%);
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 35%);
+    border-radius: 4px;
+    background: rgb(0 0 0 / 55%);
+    color: #fff;
+    font-size: 34px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.stage-arrow:hover {
+    border-color: #f5c518;
+    color: #f5c518;
+}
+
+.stage-arrow-previous {
+    left: 14px;
+}
+
+.stage-arrow-next {
+    right: 14px;
+}
+
+/* نقطه‌ها، شماره‌ی اسلاید و دکمه‌ی توقف اینجان */
+.carousel-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 54px;
+    border-bottom: 1px solid #353535;
+}
+
+.carousel-dots,
+.carousel-tools {
+    display: flex;
+    align-items: center;
+}
+
+.carousel-dots {
+    gap: 8px;
+}
+
+.carousel-dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #666;
+    cursor: pointer;
+}
+
+.carousel-dot.is-active {
+    width: 24px;
+    border-radius: 8px;
+    background: #f5c518;
+}
+
+.carousel-tools {
+    gap: 17px;
+    color: #bcbcbc;
+    font-size: 12px;
+}
+
+.autoplay-toggle {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid #4a4a4a;
+    border-radius: 50%;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.autoplay-toggle:hover {
+    border-color: #f5c518;
+    color: #f5c518;
+}
+
+/* پیشنهادهای بعدی رو اینجا یه‌جا می‌بینیم */
+.up-next {
+    padding-top: 15px;
+    border-top: 3px solid #f5c518;
+}
+
+.up-next-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.up-next-heading .section-kicker {
+    margin-bottom: 6px;
+}
+
+.up-next-heading h2 {
+    font-size: 24px;
+}
+
+.up-next-mark {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border: 1px solid #4b4b4b;
+    border-radius: 50%;
+    color: #f5c518;
+    font-size: 12px;
+}
+
+.up-next-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.up-next-list li {
+    border-bottom: 1px solid #333;
+}
+
+.up-next-item {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) 18px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 92px;
+    padding: 10px 2px;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.up-next-item:hover .up-next-title,
+.up-next-item:focus-visible .up-next-title {
+    color: #f5c518;
+}
+
+.up-next-item img {
+    display: block;
+    width: 88px;
+    height: 66px;
+    border-radius: 3px;
+    background: #242424;
+    object-fit: cover;
+    object-position: center 30%;
+}
+
+.up-next-copy {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.up-next-type {
+    color: #aaa;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.up-next-title {
+    overflow: hidden;
+    color: #f1f1f1;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-overflow: ellipsis;
+}
+
+.up-next-meta {
+    color: #aaa;
+    font-size: 11px;
+}
+
+.up-next-play {
+    color: #bcbcbc;
+    font-size: 11px;
+}
+
+.browse-trailers {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: #5799ef;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.browse-trailers:hover {
+    color: #8abaff;
+}
+
+/* توی تبلت پیشنهادها زیر اسلایدر و دوتایی می‌چینن */
+@media (max-width: 920px) {
+    .featured-layout {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+    }
+
+    .up-next-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 24px;
+    }
+}
+
+/* روی گوشی متن و دکمه‌ها جمع‌وجورتر می‌شن */
+@media (max-width: 560px) {
+    .home-content {
+        width: calc(100% - 28px);
+        margin-top: 30px;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        margin-bottom: 17px;
+    }
+
+    .section-heading h1 {
+        font-size: 26px;
+    }
+
+    .section-caption {
+        display: none;
+    }
+
+    .feature-stage {
+        height: 470px;
+        min-height: 470px;
+        aspect-ratio: auto;
+    }
+
+    .feature-copy {
+        padding: 34px 22px 27px;
+    }
+
+    .feature-copy h2 {
+        max-width: 100%;
+        font-size: 29px;
+    }
+
+    .feature-description {
+        max-width: 95%;
+        font-size: 13px;
+    }
+
+    .stage-arrow {
+        top: 45%;
+        width: 36px;
+        height: 48px;
+    }
+
+    .stage-arrow-previous {
+        left: 8px;
+    }
+
+    .stage-arrow-next {
+        right: 8px;
+    }
+
+    .up-next-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* اگه کاربر حرکت کمتر بخواد، انیمیشن‌ها رو برمی‌داریم */
+@media (prefers-reduced-motion: reduce) {
+    .feature-slide,
+    .movie-poster img {
+        transition: none;
+    }
+}
+
+/* یه فاصله تا بخش فیلم‌ها با اسلایدر قاطی نشه */
+.movie-picks {
+    margin-top: 76px;
+    padding-top: 34px;
+    border-top: 1px solid #333;
+}
+
+.movie-picks-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.movie-picks-heading .section-kicker {
+    margin-bottom: 8px;
+}
+
+.movie-picks-heading h2 {
+    margin: 0;
+    color: #f5f5f5;
+    font-size: 28px;
+    line-height: 1.15;
+}
+
+.movie-chart-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    color: #5799ef;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.movie-chart-link:hover {
+    color: #8abaff;
+}
+
+/* کنترل‌های ساده برای پیدا کردن فیلم دلخواه */
+.movie-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.movie-controls input,
+.movie-controls select,
+.watchlist-filter {
+    min-height: 40px;
+    padding: 0 12px;
+    border: 1px solid #4a4a4a;
+    border-radius: 4px;
+    background: #1b1b1b;
+    color: #f5f5f5;
+}
+
+.movie-controls input {
+    flex: 1 1 220px;
+    min-width: 180px;
+}
+
+.movie-controls select,
+.watchlist-filter {
+    cursor: pointer;
+}
+
+.movie-controls input:focus,
+.movie-controls select:focus,
+.watchlist-filter:focus-visible {
+    border-color: #f5c518;
+}
+
+.watchlist-filter {
+    color: #5799ef;
+    font-weight: 700;
+}
+
+.watchlist-filter:hover,
+.watchlist-filter.is-active {
+    border-color: #5799ef;
+    background: #1c2d42;
+}
+
+.movie-results {
+    min-height: 18px;
+    margin: 0 0 14px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* پوسترها توی صفحه‌ی بزرگ شش‌تایی کنار هم می‌آن */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.movie-card {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #303030;
+    border-radius: 5px;
+    background: #151515;
+}
+
+.movie-card[hidden] {
+    display: none !important;
+}
+
+/* پوسترها هم‌اندازه می‌مونن، حتی اگه عکس‌ها فرق داشته باشن */
+.movie-poster {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 2 / 3;
+    background: #242424;
+}
+
+.movie-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 250ms ease;
+}
+
+.movie-poster:hover img {
+    transform: scale(1.035);
+}
+
+/* شماره‌ی رتبه روی خود پوستر میاد */
+.movie-rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border-radius: 3px;
+    background: #f5c518;
+    color: #111;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.movie-card-copy {
+    padding: 14px 14px 16px;
+}
+
+.card-watchlist-toggle {
+    width: 100%;
+    min-height: 34px;
+    margin-top: 13px;
+    border: 0;
+    border-radius: 3px;
+    background: #2b3d52;
+    color: #8abaff;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.card-watchlist-toggle:hover,
+.card-watchlist-toggle[aria-pressed="true"] {
+    background: #385675;
+    color: #fff;
+}
+
+.movie-genre {
+    margin: 0 0 8px;
+    color: #aaa;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.movie-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.movie-title-row h3 {
+    min-width: 0;
+    margin: 0;
+    color: #f5f5f5;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+.movie-rating {
+    flex: 0 0 auto;
+    color: #f5c518;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.movie-year {
+    margin: 9px 0 0;
+    color: #aaa;
+    font-size: 12px;
+}
+
+.movie-year span {
+    padding: 0 4px;
+    color: #777;
+}
+
+/* توی تبلت تعداد ستون‌ها رو کمتر می‌کنیم که کارت‌ها جا داشته باشن */
+@media (max-width: 920px) {
+    .movie-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+/* روی گوشی دو پوستر کنار هم جا می‌شن */
+@media (max-width: 560px) {
+    .movie-picks {
+        margin-top: 54px;
+        padding-top: 27px;
+    }
+
+    .movie-picks-heading {
+        align-items: flex-start;
+    }
+
+    .movie-picks-heading h2 {
+        max-width: 220px;
+        font-size: 24px;
+    }
+
+    .movie-chart-link {
+        max-width: 110px;
+        white-space: normal;
+        line-height: 1.35;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .movie-controls {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .movie-controls input {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .movie-controls select,
+    .watchlist-filter {
+        width: 100%;
+        min-width: 0;
+        padding: 0 8px;
+        font-size: 12px;
+    }
+
+    .movie-card-copy {
+        padding: 11px 10px 13px;
+    }
+
+    .movie-title-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+@media (max-width: 360px) {
+    .movie-picks-heading {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .movie-picks-heading h2 {
+        max-width: none;
+    }
+
+    .movie-chart-link {
+        max-width: none;
+    }
+}
+
+/* چندتا چهره‌ی محبوب، با عکس‌های گرد مثل صفحه‌های IMDb */
+.people-section,
+.budget-section {
+    margin-top: 76px;
+    padding-top: 34px;
+    border-top: 1px solid #333;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.person-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    padding: 22px 14px;
+    border: 1px solid #303030;
+    border-radius: 5px;
+    background: #151515;
+    text-align: center;
+    transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.person-card:hover {
+    transform: translateY(-3px);
+    border-color: #f5c518;
+}
+
+.person-photo {
+    display: block;
+    width: 124px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    border: 3px solid #333;
+    border-radius: 50%;
+    background: #292929;
+}
+
+.person-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.person-name {
+    color: #f5f5f5;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.person-card:hover .person-name {
+    color: #f5c518;
+}
+
+.person-note,
+.budget-unit {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.budget-chart {
+    display: grid;
+    gap: 20px;
+    max-width: 900px;
+    padding: 22px;
+    border: 1px solid #303030;
+    border-radius: 5px;
+    background: #151515;
+}
+
+.budget-row {
+    display: grid;
+    gap: 9px;
+}
+
+.budget-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: #eee;
+    font-size: 14px;
+}
+
+.budget-label strong {
+    flex: 0 0 auto;
+    color: #f5c518;
+}
+
+.budget-track {
+    height: 10px;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #303030;
+}
+
+.budget-bar {
+    display: block;
+    width: var(--budget-width, 0%);
+    height: 100%;
+    transform-origin: left;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f5c518, #ffdf58);
+    transition: width 450ms ease;
+}
+
+.budget-disclaimer {
+    margin: 13px 0 0;
+    color: #999;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.site-footer {
+    margin-top: 84px;
+    border-top: 1px solid #303030;
+    background: #121212;
+}
+
+.footer-inner {
+    width: min(calc(100% - 48px), 1280px);
+    margin: 0 auto;
+    padding: 38px 0 24px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-brand {
+    flex-basis: 54px;
+}
+
+.footer-tagline {
+    margin: 0;
+    color: #ddd;
+    font-size: 14px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    margin-top: 28px;
+    padding: 20px 0;
+    border-top: 1px solid #303030;
+    border-bottom: 1px solid #303030;
+}
+
+.footer-links a {
+    color: #ddd;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.footer-links a:hover {
+    color: #f5c518;
+}
+
+.footer-about,
+.footer-legal {
+    color: #999;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.footer-about {
+    margin: 20px 0 8px;
+}
+
+.footer-legal {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .people-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .budget-unit {
+        max-width: 120px;
+        line-height: 1.4;
+        text-align: right;
+    }
+}
+
+@media (max-width: 560px) {
+    .people-section,
+    .budget-section {
+        margin-top: 54px;
+        padding-top: 27px;
+    }
+
+    .people-grid {
+        gap: 12px;
+    }
+
+    .person-card {
+        padding: 18px 8px;
+    }
+
+    .person-photo {
+        width: 104px;
+    }
+
+    .person-name {
+        font-size: 12px;
+    }
+
+    .budget-chart {
+        gap: 17px;
+        padding: 17px 14px;
+    }
+
+    .budget-label {
+        font-size: 12px;
+    }
+
+    .footer-inner {
+        width: calc(100% - 28px);
+        padding-top: 30px;
+    }
+
+    .footer-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .person-card,
+    .budget-bar {
+        transition: none;
+    }
+}
