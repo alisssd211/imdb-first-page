@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs><linearGradient id="fire" x2="0" y2="1"><stop stop-color="#16283c"/><stop offset=".56" stop-color="#b34b2b"/><stop offset="1" stop-color="#f4a348"/></linearGradient></defs>
+  <rect width="480" height="720" fill="url(#fire)"/>
+  <circle cx="241" cy="330" r="166" fill="#f9bd63" opacity=".74"/>
+  <circle cx="241" cy="330" r="113" fill="#ed6e34" opacity=".82"/>
+  <circle cx="241" cy="330" r="59" fill="#ffdf91"/>
+  <path d="M0 500 90 445l83 48 68-72 77 63 77-54 85 60v230H0Z" fill="#172333"/>
+  <path d="M0 568h480v152H0z" fill="#101923" opacity=".8"/>
+  <text x="32" y="626" fill="#fff4dd" font-family="Arial,sans-serif" font-size="42" font-weight="700" letter-spacing="2">OPPENHEIMER</text>
+  <text x="36" y="665" fill="#f5c27b" font-family="Arial,sans-serif" font-size="15" letter-spacing="5">A STORY OF CREATION</text>
+</svg>

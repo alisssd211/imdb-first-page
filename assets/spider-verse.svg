@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs><linearGradient id="city" x2="1" y2="1"><stop stop-color="#fb4777"/><stop offset=".48" stop-color="#603ed1"/><stop offset="1" stop-color="#162447"/></linearGradient></defs>
+  <rect width="480" height="720" fill="url(#city)"/>
+  <path d="M-20 240 180 72l-28 241 250-174-95 278 193-81-131 202H-20Z" fill="#f2bcff" opacity=".35"/>
+  <path d="M0 370 79 294v426H0zm92-85 67 72v363H92zm84 120 90-108v328h-90zm108-61 66 44v237h-66zm84-74 112 83v272H368z" fill="#171c47"/>
+  <path d="m140 0 200 720M0 154l480 282M0 598 480 169" stroke="#ff9de1" stroke-width="3" opacity=".5"/>
+  <circle cx="262" cy="274" r="75" fill="#fd477d"/><path d="M202 243q60-44 120 0l-18 54h-84z" fill="#172149"/>
+  <text x="27" y="623" fill="#fff" font-family="Arial,sans-serif" font-size="35" font-weight="700">SPIDER-VERSE</text>
+  <text x="31" y="663" fill="#ffc9f0" font-family="Arial,sans-serif" font-size="15" letter-spacing="4">ACROSS THE MULTIVERSE</text>
+</svg>

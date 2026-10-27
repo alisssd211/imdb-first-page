@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#f0a04b"/><stop offset=".48" stop-color="#9d492e"/><stop offset="1" stop-color="#241b25"/></linearGradient>
+    <linearGradient id="sand" x2="0" y2="1"><stop stop-color="#f1c078"/><stop offset="1" stop-color="#a34e32"/></linearGradient>
+  </defs>
+  <rect width="480" height="720" fill="url(#sky)"/>
+  <circle cx="340" cy="205" r="96" fill="#ffd48d" opacity=".8"/>
+  <path d="M0 400 125 300l112 110 101-160 142 154v316H0Z" fill="#68352f"/>
+  <path d="M0 470q126-93 244-14t236-23v287H0Z" fill="url(#sand)"/>
+  <path d="M0 564q142-92 255-14t225-30v200H0Z" fill="#592e2c"/>
+  <path d="M210 265h28v222h-28z" fill="#161c22"/><circle cx="224" cy="251" r="28" fill="#161c22"/>
+  <text x="34" y="630" fill="#fff0cf" font-family="Arial,sans-serif" font-size="54" font-weight="700" letter-spacing="8">DUNE</text>
+  <text x="38" y="668" fill="#f3d9b2" font-family="Arial,sans-serif" font-size="17" letter-spacing="6">PART TWO</text>
+</svg>

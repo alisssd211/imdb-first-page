@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs><radialGradient id="space"><stop stop-color="#d8c6a4"/><stop offset=".2" stop-color="#897b76"/><stop offset=".55" stop-color="#293b51"/><stop offset="1" stop-color="#0b1528"/></radialGradient></defs>
+  <rect width="480" height="720" fill="url(#space)"/>
+  <circle cx="240" cy="315" r="110" fill="none" stroke="#f1d9a8" stroke-width="2" opacity=".8"/>
+  <ellipse cx="240" cy="315" rx="190" ry="48" fill="none" stroke="#e9d8bd" stroke-width="9" opacity=".6" transform="rotate(-18 240 315)"/>
+  <path d="M0 500q105-62 202-12t278-30v262H0Z" fill="#111e2a"/>
+  <path d="M74 482h40v111H74zm296-46h43v157h-43z" fill="#182634"/>
+  <g fill="#fff"><circle cx="55" cy="96" r="3"/><circle cx="390" cy="114" r="2"/><circle cx="122" cy="182" r="2"/><circle cx="330" cy="54" r="3"/><circle cx="430" cy="302" r="2"/></g>
+  <text x="29" y="635" fill="#fff" font-family="Arial,sans-serif" font-size="48" font-weight="700" letter-spacing="5">INTERSTELLAR</text>
+  <text x="34" y="674" fill="#c6d1de" font-family="Arial,sans-serif" font-size="14" letter-spacing="5">THE JOURNEY BEGINS</text>
+</svg>

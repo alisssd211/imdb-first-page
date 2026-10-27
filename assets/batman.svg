@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs><linearGradient id="night" x2="0" y2="1"><stop stop-color="#172638"/><stop offset=".57" stop-color="#3b4248"/><stop offset="1" stop-color="#111820"/></linearGradient></defs>
+  <rect width="480" height="720" fill="url(#night)"/>
+  <circle cx="345" cy="206" r="112" fill="#d2cdbd" opacity=".86"/>
+  <path d="M0 450 40 400l39 39 48-132 54 145 51-94 43 112 57-175 52 155 45-94 51 84v280H0Z" fill="#101820"/>
+  <path d="M203 314h74l24 46-37-15-23 27-24-27-37 15z" fill="#090d12"/>
+  <path d="M0 544h480v176H0z" fill="#0b1016" opacity=".82"/>
+  <text x="35" y="635" fill="#f1eee5" font-family="Arial,sans-serif" font-size="61" font-weight="700" letter-spacing="10">THE</text>
+  <text x="35" y="687" fill="#f1eee5" font-family="Arial,sans-serif" font-size="48" font-weight="700" letter-spacing="6">BATMAN</text>
+</svg>

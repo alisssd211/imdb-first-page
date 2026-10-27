@@ -165,10 +165,15 @@ const genreFilter = document.querySelector("#genre-filter");
 const movieSort = document.querySelector("#movie-sort");
 const watchlistFilter = document.querySelector(".watchlist-filter");
 const movieResults = document.querySelector(".movie-results");
+const siteSearchForm = document.querySelector(".search-form");
+const siteSearchInput = document.querySelector("#site-search");
+const searchCategory = document.querySelector("#search-category");
+const headerWatchlistLink = document.querySelector(".watchlist-link");
+const personCards = [...document.querySelectorAll(".person-card")];
 let watchlistOnly = false;
 
 function getMovieId(card) {
-	return card.querySelector(".movie-poster").getAttribute("href").match(/tt\d+/)?.[0] || "";
+	return card.querySelector(".movie-poster").dataset.movieId;
 }
 
 function updateWatchlistButtons() {
@@ -217,6 +222,34 @@ function renderMovies() {
 		? `${visibleCount} ${visibleCount === 1 ? "title" : "titles"}`
 		: "No titles match your filters.";
 }
+
+function renderPeople(query = "") {
+	const normalizedQuery = query.trim().toLocaleLowerCase();
+	personCards.forEach((card) => {
+		card.hidden = Boolean(normalizedQuery) &&
+			!card.dataset.personName.includes(normalizedQuery);
+	});
+}
+
+siteSearchForm.addEventListener("submit", (event) => {
+	event.preventDefault();
+	const query = siteSearchInput.value.trim();
+
+	movieSearch.value = searchCategory.value === "people" ? "" : query;
+	renderMovies();
+
+	renderPeople(searchCategory.value === "movies" ? "" : query);
+
+	document.querySelector(searchCategory.value === "people" ? "#people-heading" : "#movie-picks")
+		.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+headerWatchlistLink.addEventListener("click", () => {
+	watchlistOnly = true;
+	watchlistFilter.setAttribute("aria-pressed", "true");
+	watchlistFilter.classList.add("is-active");
+	renderMovies();
+});
 
 movieSearch.addEventListener("input", renderMovies);
 genreFilter.addEventListener("change", renderMovies);

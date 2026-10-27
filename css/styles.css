@@ -785,8 +785,7 @@ select {
 
 /* اگه کاربر حرکت کمتر بخواد، انیمیشن‌ها رو برمی‌داریم */
 @media (prefers-reduced-motion: reduce) {
-    .feature-slide,
-    .movie-poster img {
+    .feature-slide {
         transition: none;
     }
 }
@@ -919,11 +918,6 @@ select {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 250ms ease;
-}
-
-.movie-poster:hover img {
-    transform: scale(1.035);
 }
 
 /* شماره‌ی رتبه روی خود پوستر میاد */
@@ -1107,40 +1101,42 @@ select {
     border-radius: 5px;
     background: #151515;
     text-align: center;
-    transition: border-color 180ms ease, transform 180ms ease;
-}
-
-.person-card:hover {
-    transform: translateY(-3px);
-    border-color: #f5c518;
 }
 
 .person-photo {
-    display: block;
+    display: grid;
     width: 124px;
     overflow: hidden;
     aspect-ratio: 1;
+    place-items: center;
     border: 3px solid #333;
     border-radius: 50%;
-    background: #292929;
+    background: linear-gradient(145deg, #d8a34f, #6b3d58);
 }
 
-.person-photo img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center top;
+.person-card:nth-child(2) .person-photo {
+    background: linear-gradient(145deg, #5799ef, #243e5e);
+}
+
+.person-card:nth-child(3) .person-photo {
+    background: linear-gradient(145deg, #98a7ab, #374650);
+}
+
+.person-card:nth-child(4) .person-photo {
+    background: linear-gradient(145deg, #e59b82, #794755);
+}
+
+.person-initials {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 1px;
 }
 
 .person-name {
     color: #f5f5f5;
     font-size: 14px;
     font-weight: 700;
-}
-
-.person-card:hover .person-name {
-    color: #f5c518;
 }
 
 .person-note,
@@ -1321,7 +1317,6 @@ select {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .person-card,
     .budget-bar {
         transition: none;
     }

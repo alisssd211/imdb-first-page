@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +13,7 @@
     <!-- همه‌چی که برای رفت‌وآمد سریع لازمه همین بالاست -->
     <header class="site-header">
         <nav class="topbar" aria-label="Main navigation">
-            <a class="brand" href="https://www.imdb.com/" aria-label="IMDb home">IMDb</a>
+            <a class="brand" href="#top" aria-label="Home">IMDb</a>
 
             <!-- با این دکمه منوی دسته‌ها باز و بسته می‌شه -->
             <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">
@@ -22,53 +22,52 @@
             </button>
 
             <!-- اسم فیلم یا آدم‌ها رو اینجا جست‌وجو کن -->
-            <form class="search-form" action="https://www.imdb.com/find/" method="get" role="search">
+            <form class="search-form" action="#movie-picks" method="get" role="search">
                 <label class="sr-only" for="search-category">Search category</label>
                 <select id="search-category" name="s">
                     <option value="all">All</option>
-                    <option value="tt">Titles</option>
-                    <option value="nm">Names</option>
-                    <option value="co">Companies</option>
+                    <option value="movies">Movies</option>
+                    <option value="people">People</option>
                 </select>
-                <label class="sr-only" for="site-search">Search IMDb</label>
-                <input id="site-search" type="search" name="q" placeholder="Search IMDb" required>
+                <label class="sr-only" for="site-search">Search this page</label>
+                <input id="site-search" type="search" name="q" placeholder="Search this page" required>
                 <button class="search-button" type="submit" aria-label="Search">
                     <span class="search-icon" aria-hidden="true"></span>
                 </button>
             </form>
 
             <!-- چند تا میان‌بر دم‌دستی -->
-            <a class="pro-link" href="https://pro.imdb.com/">IMDbPro</a>
-            <a class="watchlist-link" href="https://www.imdb.com/user/urwatchlist">＋ <span>Watchlist</span></a>
-            <a class="signin-link" href="https://www.imdb.com/registration/signin/">Sign in</a>
+            <a class="pro-link" href="#budget-heading">Movie budgets</a>
+            <a class="watchlist-link" href="#movie-picks">＋ <span>Watchlist</span></a>
+            <a class="signin-link" href="#footer-about">About</a>
         </nav>
 
         <!-- پس‌زمینه‌ی منو و خود پنل -->
         <div class="menu-backdrop" hidden></div>
-        <section class="menu-panel" id="site-menu" aria-label="IMDb menu" hidden>
+        <section class="menu-panel" id="site-menu" aria-label="Site menu" hidden>
             <div class="menu-section">
                 <h2>Movies</h2>
-                <a href="https://www.imdb.com/chart/moviemeter/">Most Popular Movies</a>
-                <a href="https://www.imdb.com/chart/top/">Top 250 Movies</a>
-                <a href="https://www.imdb.com/what-to-watch/">Browse Movies by Genre</a>
+                <a href="#movie-picks">Browse Movies</a>
+                <a href="#movie-filter">Search Movies</a>
+                <a href="#featured-heading">Featured Titles</a>
             </div>
             <div class="menu-section">
-                <h2>TV Shows</h2>
-                <a href="https://www.imdb.com/chart/tvmeter/">Most Popular TV Shows</a>
-                <a href="https://www.imdb.com/chart/toptv/">Top 250 TV Shows</a>
-                <a href="https://www.imdb.com/feature/genre/">Browse TV Shows</a>
+                <h2>Explore</h2>
+                <a href="#budget-heading">Movie Budgets</a>
+                <a href="#people-heading">Popular Stars</a>
+                <a href="#top">Back to Top</a>
             </div>
             <div class="menu-section">
-                <h2>Watch</h2>
-                <a href="https://www.imdb.com/what-to-watch/">What to Watch</a>
-                <a href="https://www.imdb.com/trailers/">Latest Trailers</a>
-                <a href="https://www.imdb.com/imdbpicks/">IMDb Picks</a>
+                <h2>Collections</h2>
+                <a href="#movie-picks">Top Rated Picks</a>
+                <a href="#featured-heading">Featured Today</a>
+                <a href="#budget-heading">Budget Comparison</a>
             </div>
             <div class="menu-section">
                 <h2>People</h2>
-                <a href="https://www.imdb.com/feature/genre/">Celebrities</a>
-                <a href="https://www.imdb.com/awards/">Awards & Events</a>
-                <a href="https://www.imdb.com/news/">News</a>
+                <a href="#people-heading">Popular Stars</a>
+                <a href="#people-heading">Actors</a>
+                <a href="#footer-about">About This Page</a>
             </div>
         </section>
     </header>
@@ -93,46 +92,46 @@
                         <!-- اسلایدها رو همین کنترل‌های پایین جابه‌جا می‌کنن -->
                         <div class="feature-slides">
                         <article class="feature-slide is-active" aria-label="1 of 4" aria-roledescription="slide" aria-hidden="false">
-                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/xOMo8BRK7PfcJv9JCnx7s5hj0PX.jpg" alt="" fetchpriority="high" decoding="async">
+                            <img class="feature-artwork" src="./assets/dune.svg" alt="" fetchpriority="high" decoding="async">
                             <div class="feature-copy">
                                 <p class="feature-kicker">FEATURED TRAILER</p>
                                 <h2>Dune: Part Two</h2>
                                 <p class="feature-meta"><span>2024</span><span>Action</span><span>2h 46m</span><span class="rating">★ 8.5</span></p>
                                 <p class="feature-description">Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.</p>
-                                <a class="title-link" href="https://www.imdb.com/title/tt15239678/">Explore title <span aria-hidden="true">↗</span></a>
+                                <a class="title-link" href="#movie-dune">Explore title <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
                         <article class="feature-slide" aria-label="2 of 4" aria-roledescription="slide" aria-hidden="true" inert>
-                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg" alt="" loading="lazy" decoding="async">
+                            <img class="feature-artwork" src="./assets/oppenheimer.svg" alt="" loading="lazy" decoding="async">
                             <div class="feature-copy">
                                 <p class="feature-kicker">FEATURED TRAILER</p>
                                 <h2>Oppenheimer</h2>
                                 <p class="feature-meta"><span>2023</span><span>Drama</span><span>3h</span><span class="rating">★ 8.3</span></p>
                                 <p class="feature-description">The story of J. Robert Oppenheimer and the scientific team behind the development of the first atomic bomb.</p>
-                                <a class="title-link" href="https://www.imdb.com/title/tt15398776/">Explore title <span aria-hidden="true">↗</span></a>
+                                <a class="title-link" href="#movie-oppenheimer">Explore title <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
                         <article class="feature-slide" aria-label="3 of 4" aria-roledescription="slide" aria-hidden="true" inert>
-                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="" loading="lazy" decoding="async">
+                            <img class="feature-artwork" src="./assets/spider-verse.svg" alt="" loading="lazy" decoding="async">
                             <div class="feature-copy">
                                 <p class="feature-kicker">FEATURED TRAILER</p>
                                 <h2>Spider-Man: Across the Spider-Verse</h2>
                                 <p class="feature-meta"><span>2023</span><span>Animation</span><span>2h 20m</span><span class="rating">★ 8.6</span></p>
                                 <p class="feature-description">Miles Morales is drawn into a multiverse-spanning adventure alongside a new team of Spider-People.</p>
-                                <a class="title-link" href="https://www.imdb.com/title/tt9362722/">Explore title <span aria-hidden="true">↗</span></a>
+                                <a class="title-link" href="#movie-spider-verse">Explore title <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
 
                         <article class="feature-slide" aria-label="4 of 4" aria-roledescription="slide" aria-hidden="true" inert>
-                            <img class="feature-artwork" src="https://image.tmdb.org/t/p/w1280/b0PlSFdDwbyK0cf5RxwDpaOJQvQ.jpg" alt="" loading="lazy" decoding="async">
+                            <img class="feature-artwork" src="./assets/batman.svg" alt="" loading="lazy" decoding="async">
                             <div class="feature-copy">
                                 <p class="feature-kicker">FEATURED TRAILER</p>
                                 <h2>The Batman</h2>
                                 <p class="feature-meta"><span>2022</span><span>Crime</span><span>2h 56m</span><span class="rating">★ 7.8</span></p>
                                 <p class="feature-description">Batman investigates a series of clues that uncover corruption and a new threat to Gotham City.</p>
-                                <a class="title-link" href="https://www.imdb.com/title/tt1877830/">Explore title <span aria-hidden="true">↗</span></a>
+                                <a class="title-link" href="#movie-batman">Explore title <span aria-hidden="true">↗</span></a>
                             </div>
                         </article>
                         </div>
@@ -172,35 +171,35 @@
                     <ol class="up-next-list">
                         <li hidden>
                             <button class="up-next-item" type="button" data-slide-to="0">
-                                <img src="https://image.tmdb.org/t/p/w342/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="" loading="lazy" decoding="async">
+                                <img src="./assets/dune.svg" alt="" loading="lazy" decoding="async">
                                 <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Dune: Part Two</span><span class="up-next-meta">2024 · 2h 46m</span></span>
                                 <span class="up-next-play" aria-hidden="true">▶</span>
                             </button>
                         </li>
                         <li>
                             <button class="up-next-item" type="button" data-slide-to="1">
-                                <img src="https://image.tmdb.org/t/p/w342/ptpr0kGAckfQkJeJIt8st5dglvd.jpg" alt="" loading="lazy" decoding="async">
+                                <img src="./assets/oppenheimer.svg" alt="" loading="lazy" decoding="async">
                                 <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Oppenheimer</span><span class="up-next-meta">2023 · 3h</span></span>
                                 <span class="up-next-play" aria-hidden="true">▶</span>
                             </button>
                         </li>
                         <li>
                             <button class="up-next-item" type="button" data-slide-to="2">
-                                <img src="https://image.tmdb.org/t/p/w342/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="" loading="lazy" decoding="async">
+                                <img src="./assets/spider-verse.svg" alt="" loading="lazy" decoding="async">
                                 <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">Across the Spider-Verse</span><span class="up-next-meta">2023 · 2h 20m</span></span>
                                 <span class="up-next-play" aria-hidden="true">▶</span>
                             </button>
                         </li>
                         <li>
                             <button class="up-next-item" type="button" data-slide-to="3">
-                                <img src="https://image.tmdb.org/t/p/w342/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="" loading="lazy" decoding="async">
+                                <img src="./assets/batman.svg" alt="" loading="lazy" decoding="async">
                                 <span class="up-next-copy"><span class="up-next-type">FEATURED</span><span class="up-next-title">The Batman</span><span class="up-next-meta">2022 · 2h 56m</span></span>
                                 <span class="up-next-play" aria-hidden="true">▶</span>
                             </button>
                         </li>
                     </ol>
 
-                    <a class="browse-trailers" href="https://www.imdb.com/trailers/">Browse more trailers <span aria-hidden="true">→</span></a>
+                    <a class="browse-trailers" href="#movie-picks">Browse all titles <span aria-hidden="true">→</span></a>
                 </aside>
             </div>
         </section>
@@ -212,7 +211,7 @@
                     <p class="section-kicker">A FEW GOOD PICKS</p>
                     <h2 id="movie-picks-heading">Find your next favorite</h2>
                 </div>
-                <a class="movie-chart-link" href="https://www.imdb.com/chart/top/">Explore IMDb charts <span aria-hidden="true">→</span></a>
+                <a class="movie-chart-link" href="#movie-grid">Explore all picks <span aria-hidden="true">→</span></a>
             </header>
 
             <!-- بدون رفرش صفحه، فیلم‌ها رو بگرد و مرتب کن -->
@@ -241,12 +240,12 @@
 
             <p class="movie-results" aria-live="polite"></p>
             <!-- کارت‌ها از اول اینجان؛ جاوااسکریپت فقط نمایش و ترتیبشون رو عوض می‌کنه -->
-            <div class="movie-grid" aria-live="polite">
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt15239678/" aria-label="Dune: Part Two on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg" alt="Dune: Part Two poster" loading="lazy" decoding="async">
+            <div class="movie-grid" id="movie-grid" aria-live="polite">
+                <article class="movie-card" id="movie-dune">
+                    <div class="movie-poster" data-movie-id="tt15239678">
+                        <img src="./assets/dune.svg" alt="Illustrated Dune: Part Two poster" loading="lazy" decoding="async">
                         <span class="movie-rank">01</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">SCI-FI · ADVENTURE</p>
                         <div class="movie-title-row"><h3>Dune: Part Two</h3><span class="movie-rating">★ 8.5</span></div>
@@ -255,11 +254,11 @@
                     </div>
                 </article>
 
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt15398776/" aria-label="Oppenheimer on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg" alt="Oppenheimer poster" loading="lazy" decoding="async">
+                <article class="movie-card" id="movie-oppenheimer">
+                    <div class="movie-poster" data-movie-id="tt15398776">
+                        <img src="./assets/oppenheimer.svg" alt="Illustrated Oppenheimer poster" loading="lazy" decoding="async">
                         <span class="movie-rank">02</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">DRAMA · HISTORY</p>
                         <div class="movie-title-row"><h3>Oppenheimer</h3><span class="movie-rating">★ 8.3</span></div>
@@ -268,11 +267,11 @@
                     </div>
                 </article>
 
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt9362722/" aria-label="Spider-Man: Across the Spider-Verse on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg" alt="Spider-Man: Across the Spider-Verse poster" loading="lazy" decoding="async">
+                <article class="movie-card" id="movie-spider-verse">
+                    <div class="movie-poster" data-movie-id="tt9362722">
+                        <img src="./assets/spider-verse.svg" alt="Illustrated Spider-Man: Across the Spider-Verse poster" loading="lazy" decoding="async">
                         <span class="movie-rank">03</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">ANIMATION · ACTION</p>
                         <div class="movie-title-row"><h3>Across the Spider-Verse</h3><span class="movie-rating">★ 8.6</span></div>
@@ -281,11 +280,11 @@
                     </div>
                 </article>
 
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt1877830/" aria-label="The Batman on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/74xTEgt7R36Fpooo50r9T25onhq.jpg" alt="The Batman poster" loading="lazy" decoding="async">
+                <article class="movie-card" id="movie-batman">
+                    <div class="movie-poster" data-movie-id="tt1877830">
+                        <img src="./assets/batman.svg" alt="Illustrated The Batman poster" loading="lazy" decoding="async">
                         <span class="movie-rank">04</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">CRIME · DRAMA</p>
                         <div class="movie-title-row"><h3>The Batman</h3><span class="movie-rating">★ 7.8</span></div>
@@ -294,11 +293,11 @@
                     </div>
                 </article>
 
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt0816692/" aria-label="Interstellar on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg" alt="Interstellar poster" loading="lazy" decoding="async">
+                <article class="movie-card" id="movie-interstellar">
+                    <div class="movie-poster" data-movie-id="tt0816692">
+                        <img src="./assets/interstellar.svg" alt="Illustrated Interstellar poster" loading="lazy" decoding="async">
                         <span class="movie-rank">05</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">SCI-FI · DRAMA</p>
                         <div class="movie-title-row"><h3>Interstellar</h3><span class="movie-rating">★ 8.7</span></div>
@@ -307,11 +306,11 @@
                     </div>
                 </article>
 
-                <article class="movie-card">
-                    <a class="movie-poster" href="https://www.imdb.com/title/tt6751668/" aria-label="Parasite on IMDb">
-                        <img src="https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg" alt="Parasite poster" loading="lazy" decoding="async">
+                <article class="movie-card" id="movie-parasite">
+                    <div class="movie-poster" data-movie-id="tt6751668">
+                        <img src="./assets/parasite.svg" alt="Illustrated Parasite poster" loading="lazy" decoding="async">
                         <span class="movie-rank">06</span>
-                    </a>
+                    </div>
                     <div class="movie-card-copy">
                         <p class="movie-genre">THRILLER · DRAMA</p>
                         <div class="movie-title-row"><h3>Parasite</h3><span class="movie-rating">★ 8.5</span></div>
@@ -329,29 +328,29 @@
                     <p class="section-kicker">STARS IN THE SPOTLIGHT</p>
                     <h2 id="people-heading">Popular stars</h2>
                 </div>
-                <a class="movie-chart-link" href="https://www.imdb.com/search/name/">Meet more stars <span aria-hidden="true">→</span></a>
+                <a class="movie-chart-link" href="#people-grid">Meet the stars <span aria-hidden="true">→</span></a>
             </header>
-            <div class="people-grid">
-                <a class="person-card" href="https://www.imdb.com/name/nm0000138/">
-                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/wo2hJpn04vbtmh0B9utCFdsQhxM.jpg" alt="Leonardo DiCaprio" loading="lazy" decoding="async"></span>
+            <div class="people-grid" id="people-grid">
+                <div class="person-card" data-person-name="leonardo dicaprio">
+                    <span class="person-photo" aria-hidden="true"><span class="person-initials">LD</span></span>
                     <span class="person-name">Leonardo DiCaprio</span>
                     <span class="person-note">Actor · Producer</span>
-                </a>
-                <a class="person-card" href="https://www.imdb.com/name/nm0000129/">
-                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/8qBylBsQf4llkGrWR3qAsOtOU8O.jpg" alt="Tom Cruise" loading="lazy" decoding="async"></span>
+                </div>
+                <div class="person-card" data-person-name="tom cruise">
+                    <span class="person-photo" aria-hidden="true"><span class="person-initials">TC</span></span>
                     <span class="person-name">Tom Cruise</span>
                     <span class="person-note">Actor · Producer</span>
-                </a>
-                <a class="person-card" href="https://www.imdb.com/name/nm0614165/">
-                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/llkbyWKwpfowZ6C8peBjIV9jj99.jpg" alt="Cillian Murphy" loading="lazy" decoding="async"></span>
+                </div>
+                <div class="person-card" data-person-name="cillian murphy">
+                    <span class="person-photo" aria-hidden="true"><span class="person-initials">CM</span></span>
                     <span class="person-name">Cillian Murphy</span>
                     <span class="person-note">Actor · Producer</span>
-                </a>
-                <a class="person-card" href="https://www.imdb.com/name/nm3053338/">
-                    <span class="person-photo"><img src="https://image.tmdb.org/t/p/w185/euDPyqLnuwaWMHajcU3oZ9uZezR.jpg" alt="Margot Robbie" loading="lazy" decoding="async"></span>
+                </div>
+                <div class="person-card" data-person-name="margot robbie">
+                    <span class="person-photo" aria-hidden="true"><span class="person-initials">MR</span></span>
                     <span class="person-name">Margot Robbie</span>
                     <span class="person-note">Actor · Producer</span>
-                </a>
+                </div>
             </div>
         </section>
 
@@ -394,16 +393,16 @@
     <footer class="site-footer">
         <div class="footer-inner">
             <div class="footer-top">
-                <a class="brand footer-brand" href="https://www.imdb.com/" aria-label="IMDb home">IMDb</a>
+                <a class="brand footer-brand" href="#top" aria-label="Home">IMDb</a>
                 <p class="footer-tagline">Find movies. Follow stories. Celebrate the people who make them.</p>
             </div>
             <nav class="footer-links" aria-label="Footer">
-                <a href="https://www.imdb.com/conditions/">Conditions of Use</a>
-                <a href="https://www.imdb.com/privacy/">Privacy Policy</a>
-                <a href="https://www.imdb.com/privacy/cookie/">Cookie Settings</a>
-                <a href="https://help.imdb.com/">Help</a>
+                <a href="#movie-picks">Movies</a>
+                <a href="#people-heading">People</a>
+                <a href="#budget-heading">Budgets</a>
+                <a href="#top">Back to top</a>
             </nav>
-            <p class="footer-about">A fan-made IMDb-inspired movie page. Ratings, budgets, images, and trademarks belong to their respective owners.</p>
+            <p class="footer-about" id="footer-about">A self-contained movie discovery demo. Movie details are sample data stored locally in this page; no external API is used.</p>
             <p class="footer-legal">© 2026 IMDb-inspired demo. All rights reserved.</p>
         </div>
     </footer>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 720">
+  <defs><linearGradient id="garden" x2="0" y2="1"><stop stop-color="#bfd1b0"/><stop offset=".52" stop-color="#556b4d"/><stop offset="1" stop-color="#1b3029"/></linearGradient></defs>
+  <rect width="480" height="720" fill="url(#garden)"/>
+  <path d="M0 0h480v80H0z" fill="#d7ddcb"/>
+  <path d="M52 80h376v330H52z" fill="#e1dfc8"/>
+  <path d="M88 122h145v170H88zm179 0h123v170H267z" fill="#9db49a"/>
+  <path d="M0 460q104-127 206-22t274-8v290H0Z" fill="#253b2d"/>
+  <path d="M0 564q155-75 480-25v181H0Z" fill="#142720"/>
+  <ellipse cx="244" cy="437" rx="68" ry="17" fill="#17241d"/>
+  <path d="M200 301h86v142h-86z" fill="#242b2a"/><circle cx="243" cy="276" r="37" fill="#b68e70"/>
+  <text x="110" y="633" fill="#fff" font-family="Arial,sans-serif" font-size="58" font-weight="700" letter-spacing="8">PARASITE</text>
+  <text x="126" y="675" fill="#d7e5cd" font-family="Arial,sans-serif" font-size="14" letter-spacing="5">A PERFECT PLAN</text>
+</svg>
